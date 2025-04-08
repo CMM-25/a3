@@ -1,0 +1,862 @@
+<?xml version="1.0" ?>
+<robot name="bob_v3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<link name="pelvis">
+		<inertial>
+			<mass value="6.4072265625"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0422351360321045" ixy="0.0" ixz="0.0" iyy="0.0304092979431152" iyz="0.0" izz="0.0422351360321045"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.0 0.0"/>
+			<geometry>
+				 <mesh filename="meshes/pelvis.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.1125"/>
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="lumbar_tmp1">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="lumbar">
+		<inertial>
+			<mass value="5.6953125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.1125"/>
+			<inertia ixx="0.04805419921875" ixy="0.0" ixz="0.0" iyy="0.0300338745117188" iyz="0.0" izz="0.0300338745117188"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.0 -0.1125"/>
+			<geometry>
+				 <mesh filename="meshes/lowerback.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.225"/>
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="torso_tmp1">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="torso_tmp2">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="torso">
+		<inertial>
+			<mass value="19.2216796875"/>
+			<origin rpy="0 0 0" xyz="0.028125 0.0 0.1125"/>
+			<inertia ixx="0.364911575317383" ixy="0.0" ixz="0.0" iyy="0.228069734573364" iyz="0.0" izz="0.228069734573364"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.0 -0.3375"/>
+			<geometry>
+				 <mesh filename="meshes/torso.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.28125"/>
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="neck">
+		<inertial>
+			<mass value="4.271484375"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.05625"/>
+			<inertia ixx="0.0225254058837891" ixy="0.0" ixz="0.0" iyy="0.0281567573547363" iyz="0.0" izz="0.0146415138244629"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.0 -0.61875"/>
+			<geometry>
+				 <mesh filename="meshes/neck.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="-0.028125 0.0 -0.625"/>
+			<geometry>
+				 <mesh filename="meshes/head.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.1125"/>
+			<geometry>
+				<sphere radius="0.1"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="lScapula">
+		<inertial>
+			<mass value="0.35595703125"/>
+			<origin rpy="0 0 0" xyz="-0.084375 0.05625 0.0"/>
+			<inertia ixx="0.000469279289245605" ixy="0.0" ixz="0.0" iyy="0.000187711715698242" iyz="0.0" izz="0.000469279289245605"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="-0.084375 -0.028125000000000004 -0.5625"/>
+			<geometry>
+				 <mesh filename="meshes/lScapula.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+	</link>
+
+	<link name="lUpperArm_tmp1">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="lUpperArm_tmp2">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="lUpperArm">
+		<inertial>
+			<mass value="2.4027099609375"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.16875"/>
+			<inertia ixx="0.02423240929842" ixy="0.0" ixz="0.0" iyy="0.02423240929842" iyz="0.0" izz="0.00285087168216705"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 -0.16875 -0.5625"/>
+			<geometry>
+				 <mesh filename="meshes/lUpperArm.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<geometry>
+				<sphere radius="0.04"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.3375"/>
+			<geometry>
+				<sphere radius="0.04"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="lLowerArm_tmp">
+		<inertial>
+			<mass value="0.8009033203125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.05625"/>
+			<inertia ixx="0.00131984800100327" ixy="0.0" ixz="0.0" iyy="0.00131984800100327" iyz="0.0" izz="0.000950290560722351"/>
+		</inertial>
+	</link>
+
+	<link name="lLowerArm">
+		<inertial>
+			<mass value="0.8009033203125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.05625"/>
+			<inertia ixx="0.00131984800100327" ixy="0.0" ixz="0.0" iyy="0.00131984800100327" iyz="0.0" izz="0.000950290560722351"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 -0.16875 -0.225"/>
+			<geometry>
+				 <mesh filename="meshes/lLowerArm.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+	</link>
+
+	<link name="lHand_tmp">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="lHand">
+		<inertial>
+			<mass value="0.40045166015625"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.05625"/>
+			<inertia ixx="0.000976687520742416" ixy="0.0" ixz="0.0" iyy="0.00118786320090294" iyz="0.0" izz="0.000263969600200653"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 -0.16875 0.05625"/>
+			<geometry>
+				 <mesh filename="meshes/lHand.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.08625"/>
+			<geometry>
+				<sphere radius="0.02"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.026250000000000002"/>
+			<geometry>
+				<sphere radius="0.02"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="rScapula">
+		<inertial>
+			<mass value="0.35595703125"/>
+			<origin rpy="0 0 0" xyz="-0.084375 -0.05625 0.0"/>
+			<inertia ixx="0.000469279289245605" ixy="0.0" ixz="0.0" iyy="0.000187711715698242" iyz="0.0" izz="0.000469279289245605"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="-0.084375 0.028125000000000004 -0.5625"/>
+			<geometry>
+				 <mesh filename="meshes/rScapula.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+	</link>
+
+	<link name="rUpperArm_tmp1">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="rUpperArm_tmp2">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="rUpperArm">
+		<inertial>
+			<mass value="2.4027099609375"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.16875"/>
+			<inertia ixx="0.02423240929842" ixy="0.0" ixz="0.0" iyy="0.02423240929842" iyz="0.0" izz="0.00285087168216705"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.16875 -0.5625"/>
+			<geometry>
+				 <mesh filename="meshes/rUpperArm.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<geometry>
+				<sphere radius="0.04"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.3375"/>
+			<geometry>
+				<sphere radius="0.04"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="rLowerArm">
+		<inertial>
+			<mass value="0.8009033203125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.05625"/>
+			<inertia ixx="0.00131984800100327" ixy="0.0" ixz="0.0" iyy="0.00131984800100327" iyz="0.0" izz="0.000950290560722351"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.16875 -0.225"/>
+			<geometry>
+				 <mesh filename="meshes/rLowerArm.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+	</link>
+
+	<link name="rLowerArm_tmp">
+		<inertial>
+			<mass value="0.8009033203125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.05625"/>
+			<inertia ixx="0.00131984800100327" ixy="0.0" ixz="0.0" iyy="0.00131984800100327" iyz="0.0" izz="0.000950290560722351"/>
+		</inertial>
+	</link>
+
+	<link name="rHand_tmp">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="rHand">
+		<inertial>
+			<mass value="0.40045166015625"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.05625"/>
+			<inertia ixx="0.000976687520742416" ixy="0.0" ixz="0.0" iyy="0.00118786320090294" iyz="0.0" izz="0.000263969600200653"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.16875 0.05625"/>
+			<geometry>
+				 <mesh filename="meshes/rHand.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.08625"/>
+			<geometry>
+				<sphere radius="0.02"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.026250000000000002"/>
+			<geometry>
+				<sphere radius="0.02"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="lUpperLeg_tmp1">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="lUpperLeg_tmp2">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="lUpperLeg">
+		<inertial>
+			<mass value="5.6953125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.225"/>
+			<inertia ixx="0.102115173339844" ixy="0.0" ixz="0.0" iyy="0.102115173339844" iyz="0.0" izz="0.0120135498046875"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 -0.1125 0.0"/>
+			<geometry>
+				 <mesh filename="meshes/lUpperLeg.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.45"/>
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.02 0.0"/>
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="lLowerLeg">
+		<inertial>
+			<mass value="3.20361328125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.16875"/>
+			<inertia ixx="0.0559615552425385" ixy="0.0" ixz="0.0" iyy="0.0559615552425385" iyz="0.0" izz="0.0038011622428894"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 -0.1125 0.45"/>
+			<geometry>
+				 <mesh filename="meshes/lLowerLeg.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.39375000000000004"/>
+			<geometry>
+				<sphere radius="0.03"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="lFoot">
+		<inertial>
+			<mass value="0.533935546875"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.000281567573547363" ixy="0.0" ixz="0.0" iyy="0.00140783786773682" iyz="0.0" izz="0.00140783786773682"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="-0.03 -0.1125 0.871875"/>
+			<geometry>
+				 <mesh filename="meshes/lFoot.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="-0.03 -0.1125 0.871875"/>
+			<geometry>
+				 <mesh filename="meshes/lToes.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="-0.07 0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="-0.07 -0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.07 0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.07 -0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.125 0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.125 -0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="lFoot_End_Effector_0" type="fixed">
+		<origin rpy="0 0 0" xyz="0.07 0.0 -0.02"/>
+		<parent link="lFoot"/>
+		<child link="lFoot_End_Effector_0"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="0" upper="0"/>
+	</joint>
+
+	<link name="lFoot_End_Effector_0">
+		<inertial>
+			<mass value="0"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+		</inertial>
+	</link>
+
+	<link name="rUpperLeg_tmp1">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="rUpperLeg_tmp2">
+		<inertial>
+			<mass value="0.35"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+	</link>
+
+	<link name="rUpperLeg">
+		<inertial>
+			<mass value="5.6953125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.225"/>
+			<inertia ixx="0.102115173339844" ixy="0.0" ixz="0.0" iyy="0.102115173339844" iyz="0.0" izz="0.0120135498046875"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.1125 0.0"/>
+			<geometry>
+				 <mesh filename="meshes/rUpperLeg.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.45"/>
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 -0.02 0.0"/>
+			<geometry>
+				<sphere radius="0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="rLowerLeg">
+		<inertial>
+			<mass value="3.20361328125"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.16875"/>
+			<inertia ixx="0.0559615552425385" ixy="0.0" ixz="0.0" iyy="0.0559615552425385" iyz="0.0" izz="0.0038011622428894"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="0.0 0.1125 0.45"/>
+			<geometry>
+				 <mesh filename="meshes/rLowerLeg.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.0 0.0 -0.39375000000000004"/>
+			<geometry>
+				<sphere radius="0.03"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="rFoot">
+		<inertial>
+			<mass value="0.533935546875"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.000281567573547363" ixy="0.0" ixz="0.0" iyy="0.00140783786773682" iyz="0.0" izz="0.00140783786773682"/>
+		</inertial>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="-0.03 0.1125 0.871875"/>
+			<geometry>
+				 <mesh filename="meshes/rFoot.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<visual>
+			<origin rpy="1.5700924586837752e-16 0.0 1.5707963267948966" xyz="-0.03 0.1125 0.871875"/>
+			<geometry>
+				 <mesh filename="meshes/rToes.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="-0.07 0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="-0.07 -0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.07 0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.07 -0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.125 0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		<collision>
+			<origin rpy="0 0 0" xyz="0.125 -0.03 -0.02"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="rFoot_End_Effector_0" type="fixed">
+		<origin rpy="0 0 0" xyz="0.07 0.0 -0.02"/>
+		<parent link="rFoot"/>
+		<child link="rFoot_End_Effector_0"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="0" upper="0"/>
+	</joint>
+
+	<link name="rFoot_End_Effector_0">
+		<inertial>
+			<mass value="0"/>
+			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+			<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+		</inertial>
+	</link>
+
+	<joint name="joint_lowerback_x" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.1125"/>
+		<parent link="pelvis"/>
+		<child link="lumbar_tmp1"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_lowerback_z" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="lumbar_tmp1"/>
+		<child link="lumbar"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_upperback_x" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.225"/>
+		<parent link="lumbar"/>
+		<child link="torso_tmp1"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_upperback_y" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="torso_tmp1"/>
+		<child link="torso_tmp2"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_upperback_z" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="torso_tmp2"/>
+		<child link="torso"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_lowerneck_y" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.28125"/>
+		<parent link="torso"/>
+		<child link="neck"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_lScapula_y" type="revolute">
+		<origin rpy="0 0 0" xyz="0.084375 0.028125 0.225"/>
+		<parent link="torso"/>
+		<child link="lScapula"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_lShoulder_1" type="revolute">
+		<origin rpy="0 0 0" xyz="-0.084375 0.140625 0.0"/>
+		<parent link="lScapula"/>
+		<child link="lUpperArm_tmp1"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-3.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_lShoulder_2" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="lUpperArm_tmp1"/>
+		<child link="lUpperArm_tmp2"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.2"/>
+	</joint>
+
+	<joint name="joint_lShoulder_torsion" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="lUpperArm_tmp2"/>
+		<child link="lUpperArm"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_lElbow_flexion_extension" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.3375"/>
+		<parent link="lUpperArm"/>
+		<child link="lLowerArm"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-2.5" upper="0.5"/>
+	</joint>
+
+	<joint name="joint_lElbow_torsion" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.1125"/>
+		<parent link="lLowerArm"/>
+		<child link="lLowerArm_tmp"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.6"/>
+	</joint>
+
+	<joint name="joint_lWrist_x" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.16875"/>
+		<parent link="lLowerArm_tmp"/>
+		<child link="lHand_tmp"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-0.5" upper="0.5"/>
+	</joint>
+
+	<joint name="joint_lWrist_z" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="lHand_tmp"/>
+		<child link="lHand"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.5" upper="1.5"/>
+	</joint>
+
+	<joint name="joint_rScapula_y" type="revolute">
+		<origin rpy="0 0 0" xyz="0.084375 -0.028125 0.225"/>
+		<parent link="torso"/>
+		<child link="rScapula"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_rShoulder_1" type="revolute">
+		<origin rpy="0 0 0" xyz="-0.084375 -0.140625 0.0"/>
+		<parent link="rScapula"/>
+		<child link="rUpperArm_tmp1"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-3.0" upper="0.5"/>
+	</joint>
+
+	<joint name="joint_rShoulder_2" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="rUpperArm_tmp1"/>
+		<child link="rUpperArm_tmp2"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.2" upper="0.3"/>
+	</joint>
+
+	<joint name="joint_rShoulder_torsion" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="rUpperArm_tmp2"/>
+		<child link="rUpperArm"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_rElbow_flexion_extension" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.3375"/>
+		<parent link="rUpperArm"/>
+		<child link="rLowerArm"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-2.5" upper="0.0"/>
+	</joint>
+
+	<joint name="joint_rElbow_torsion" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.1125"/>
+		<parent link="rLowerArm"/>
+		<child link="rLowerArm_tmp"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.6" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_rWrist_x" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.16875"/>
+		<parent link="rLowerArm_tmp"/>
+		<child link="rHand_tmp"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-0.5" upper="0.5"/>
+	</joint>
+
+	<joint name="joint_rWrist_z" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="rHand_tmp"/>
+		<child link="rHand"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.5" upper="1.5"/>
+	</joint>
+
+	<joint name="joint_lHip_1" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.1125 0.0"/>
+		<parent link="pelvis"/>
+		<child link="lUpperLeg_tmp1"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-2.2" upper="2.2"/>
+	</joint>
+
+	<joint name="joint_lHip_2" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="lUpperLeg_tmp1"/>
+		<child link="lUpperLeg_tmp2"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="2.5"/>
+	</joint>
+
+	<joint name="joint_lHip_torsion" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="lUpperLeg_tmp2"/>
+		<child link="lUpperLeg"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.5" upper="1.5"/>
+	</joint>
+
+	<joint name="joint_lKnee" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.45"/>
+		<parent link="lUpperLeg"/>
+		<child link="lLowerLeg"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-0.5" upper="2.5"/>
+	</joint>
+
+	<joint name="joint_lAnkle_1" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.39375000000000004"/>
+		<parent link="lLowerLeg"/>
+		<child link="lFoot"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.5"/>
+	</joint>
+
+	<joint name="joint_rHip_1" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 -0.1125 0.0"/>
+		<parent link="pelvis"/>
+		<child link="rUpperLeg_tmp1"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-2.2" upper="2.2"/>
+	</joint>
+
+	<joint name="joint_rHip_2" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="rUpperLeg_tmp1"/>
+		<child link="rUpperLeg_tmp2"/>
+		<axis xyz="1.0 0.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-2.5" upper="1.0"/>
+	</joint>
+
+	<joint name="joint_rHip_torsion" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+		<parent link="rUpperLeg_tmp2"/>
+		<child link="rUpperLeg"/>
+		<axis xyz="0.0 0.0 1.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.5" upper="1.5"/>
+	</joint>
+
+	<joint name="joint_rKnee" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.45"/>
+		<parent link="rUpperLeg"/>
+		<child link="rLowerLeg"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-0.5" upper="2.5"/>
+	</joint>
+
+	<joint name="joint_rAnkle_1" type="revolute">
+		<origin rpy="0 0 0" xyz="0.0 0.0 -0.39375000000000004"/>
+		<parent link="rLowerLeg"/>
+		<child link="rFoot"/>
+		<axis xyz="0.0 1.0 0.0"/>
+		<limit effort="1000.0" velocity="500.0" lower="-1.0" upper="1.5"/>
+	</joint>
+
+</robot>
+
