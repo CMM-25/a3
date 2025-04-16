@@ -5,6 +5,7 @@ In this assignment, we will use deep reinforcement learning to train a control p
 The character is simulated using the Isaac Gym physics engine.
 The goal is to train the character to imitate a reference motion, similar to [DeepMimic]([https://arxiv.org/abs/1804.02717]) [1].
 For example, imitating a cartwheel reference motion:
+
 ![mimic](animRL/resources/images/cartwheel_mimic.gif)
 
 _\[ Green: reference motion, Gray: simulated character imitating the reference \]_
@@ -182,7 +183,7 @@ We provide you with a docker image that has all the necessary dependencies insta
 
 1. Clone your repository, and head to your desired branch.
 ```
-git clone https://gitlab.inf.ethz.ch/crl/cmm-animrl # use your own repository
+git clone git@github.com:CMM-25/a3.git # use your own repository
 ```
 2. Pull the docker container
 ```bash
@@ -195,8 +196,9 @@ tmux
 ```
 4. Run the docker container
 ```bash
-docker run -it --gpus all --name cmm-docker -v /home/ubuntu/cmm-animrl:/root/cmm-animrl fzargar75/animrl bash
+docker run -it --gpus all --name cmm-docker -v /home/ubuntu/a3:/root/a3 fzargar75/animrl bash
 ```
+and replace `a3` with your actual folder name.
 After running this, you should be inside the docker container, you can verify that by seeing that the username has changed.
 
 5. Make sure this line in the `pyproject.toml` is **uncommented**:
@@ -206,7 +208,7 @@ isaacgym = { path = "isaacgym"} # comment this if on your local system
 
 6. Inside the docker container, install the package
 ```bash
-cd /root/cmm-animrl
+cd /root/a3
 pip install -e .
 ```
 
@@ -220,8 +222,8 @@ docker attach cmm-docker
 ```
 2. You can now run the training script inside the container, with the desired arguments.
 ```bash
-cd animRL # if you are in another directory
-python scripts/train.py --task=walk --dv --wb
+cd a3 # if you are in another directory
+python3 animRL/scripts/train.py --task=walk --dv --wb
 ```
 
 After a few seconds, you will see the training has started. 
@@ -231,7 +233,7 @@ You can optionally create a new tmux window to see the gpu usage by running `nvi
 
 **Note:** To streamline working on a remote server, checkout [VS code's remote development plugin](https://code.visualstudio.com/docs/remote/ssh).
 
-**Note:** The folder `cmm-animrl` is always synced inside and out of the docker. So if you change the branch outside, your files inside the docker also change.
+**Note:** The folder `a3` is always synced inside and out of the docker. So if you change the branch outside, your files inside the docker also change.
 
 ## f. Weights & Biases
 You can monitor the training process using the Weights & Biases dashboard. 
@@ -395,15 +397,15 @@ If your environment has randomness, you can run the evaluation script multiple t
 
 To copy the evaluation files to your local machine, you can use the following command from your **local** computer or laptop:
 ```bash
-scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/cmm-animrl/animRL/logs/bob/<run-name>/animation.mp4 .
-scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/cmm-animrl/animRL/logs/bob/<run-name>/eval_rewards.png .
-scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/cmm-animrl/animRL/logs/bob/<run-name>/eval_buf.json .
+scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/a3/animRL/logs/bob/<run-name>/animation.mp4 .
+scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/a3/animRL/logs/bob/<run-name>/eval_rewards.png .
+scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/a3/animRL/logs/bob/<run-name>/eval_buf.json .
 ```
 
 You can also copy the policy and config files in a similar way. To prevent extra transfer, just copy the last checkpoint:
 ```bash
-scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/cmm-animrl/animRL/logs/bob/<run-name>/bob.json .
-scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/cmm-animrl/animRL/logs/bob/<run-name>/model.pt .
+scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/a3/animRL/logs/bob/<run-name>/bob.json .
+scp -i <your_aws_key>.pem ubuntu@<your_instance_ip>:/home/ubuntu/a3/animRL/logs/bob/<run-name>/model.pt .
 ```
 
 # 4. Task 2 - Imitate Cartwheel
