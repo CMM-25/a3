@@ -11,12 +11,12 @@ python = ">=3.8 <3.9"
 matplotlib = "*"
 numpy = "<1.20"
 torch = { url = "https://download.pytorch.org/whl/cu116/torch-1.13.1%2Bcu116-cp38-cp38-linux_x86_64.whl" }
-isaacgym = { path = "isaacgym", optional = true }
 tensorboard = "^2.12.0"
 wandb = "*"
 moviepy = "*"
 ujson = "*"
 urdfpy = "*"
+isaacgym = { path = "isaacgym"} # comment this if on your local system
 
 [tool.black]
 line-length = 140
@@ -32,5 +32,5 @@ target-version = "py38"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry.extras]
-isaac = ["isaacgym"]
+#[tool.poetry.extras]
+#isaac = ["isaacgym"]

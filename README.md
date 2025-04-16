@@ -70,8 +70,14 @@ This is the environment where you will be developing and testing the rewards on 
 We use `poetry` for managing python environment.
 Please install poetry by following the instructions [here](https://python-poetry.org/docs/#installing-with-the-official-installer).
 
+Go to `pyproject.toml` file and comment this line:
+```p
+isaacgym = { path = "isaacgym"} # comment this if on your local system
+```
+
 You should use `python==3.8` for this project.
 We provide installation guide for Ubuntu here, for MacOS and Windows, please follow a similar procedure as in [Assignment 2](https://python-poetry.org/docs/#installing-with-the-official-installer) (but use python3.8 instead).
+
 
 For Ubuntu:
 ```bash
@@ -117,6 +123,7 @@ exit
 
 **Note:** You can also replace **start** with **stop** or **reboot** to execute the respective commands to your instance. 
  To get the state of a running instance, use the **status** command.
+You can also check your total usage time by using the **uptime** command.
 
 ### Connecting to your instance
 After you have started the instance, you can connect to it from your personal computer:
@@ -192,10 +199,15 @@ docker run -it --gpus all --name cmm-docker -v /home/ubuntu/cmm-animrl:/root/cmm
 ```
 After running this, you should be inside the docker container, you can verify that by seeing that the username has changed.
 
-5. Inside the docker container, install the package
+5. Make sure this line in the `pyproject.toml` is **uncommented**:
+```
+isaacgym = { path = "isaacgym"} # comment this if on your local system
+```
+
+6. Inside the docker container, install the package
 ```bash
 cd /root/cmm-animrl
-pip install -e ".[isaac]"
+pip install -e .
 ```
 
 ## e. Run your code on the server
