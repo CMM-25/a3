@@ -77,16 +77,17 @@ isaacgym = { path = "isaacgym"} # comment this if on your local system
 ```
 
 You should use `python==3.8` for this project.
-We provide installation guide for Ubuntu here, for MacOS and Windows, please follow a similar procedure as in [Assignment 2](https://python-poetry.org/docs/#installing-with-the-official-installer) (but use python3.8 instead).
+We provide installation guide for Ubuntu here, for MacOS and Windows, please follow a similar procedure as in [Assignment 2](https://github.com/CMM-25/a2?tab=readme-ov-file#b-install-dependencies) (but use python3.8 instead).
 
+Additional step for **Windows**: before running `poetry install`, go to `pyproject.toml` file and change the torch dependency to the one corresponding to windows.
 
-For Ubuntu:
+For **Ubuntu**:
 ```bash
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt-get install -y python3.8 build-essential python3.8-dev python3.8-distutils
 
-cd animRL
+cd a3 # or your own repo
 poetry env use /usr/bin/python3.8
 poetry install
 ```
@@ -222,8 +223,7 @@ docker attach cmm-docker
 ```
 2. You can now run the training script inside the container, with the desired arguments.
 ```bash
-cd a3 # if you are in another directory
-python3 animRL/scripts/train.py --task=walk --dv --wb
+python animRL/scripts/train.py --task=walk --dv --wb
 ```
 
 After a few seconds, you will see the training has started. 
@@ -384,8 +384,7 @@ Here is an example of how your learning curve should look like (numbers might di
 ## b. Evaluate your policy after training
 After training, you can evaluate your policy by running the evaluation script (from your docker container).
 ```bash
-cd animRL
-python3 scripts/eval.py --task=walk --load_run=<run_id> --checkpoint=<checkpoint_id>
+python3 animRL/scripts/eval.py --task=walk --load_run=<run_id> --checkpoint=<checkpoint_id>
 ```
 You can replace `<run_id>` with the run name from W&B (same as the folder name), and `<checkpoint_id>` with the iteration number of the checkpoint you want to evaluate (for example, 4000).
 This script will run an episode and save the animation to `animation.mp4`, which you can download and watch.
