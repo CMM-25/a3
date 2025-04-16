@@ -4,22 +4,19 @@ version = "0.2"
 description = "CMM 2025 - A3: Humanoid Motion Imitation with Deep Reinforcement Learning"
 authors = ["Fatemeh Zargarbashi <Fatemeh.zargarbashi@inf.ethz.ch>"]
 readme = "README.md"
-packages = [{include = "animRL"}]
+packages = [{ include = "animRL" }]
 
 [tool.poetry.dependencies]
 python = ">=3.8 <3.9"
 matplotlib = "*"
 numpy = "<1.20"
-torch = {url = "https://download.pytorch.org/whl/cu116/torch-1.13.1%2Bcu116-cp38-cp38-linux_x86_64.whl"}
-isaacgym = { path = "isaacgym"}
+torch = { url = "https://download.pytorch.org/whl/cu116/torch-1.13.1%2Bcu116-cp38-cp38-linux_x86_64.whl" }
+isaacgym = { path = "isaacgym", optional = true }
 tensorboard = "^2.12.0"
 wandb = "*"
 moviepy = "*"
 ujson = "*"
-urdfpy= "*"
-#imageio = "*"
-#opencv-python = "*"
-#tk = "*"
+urdfpy = "*"
 
 [tool.black]
 line-length = 140
@@ -29,8 +26,11 @@ target-version = ["py38"]
 ignore = ["C901", "F403", "F405", "E501", "E402"]
 select = ["F", "E", "W", "I001"]
 line-length = 120
-target-version= "py38"
+target-version = "py38"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.extras]
+isaac = ["isaacgym"]
