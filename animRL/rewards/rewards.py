@@ -19,7 +19,7 @@ The data dictionary contains the following:
 * 'dof_vel': The joint velocities of the agent. The shape is (num_envs, num_dof).
 * 'ee_global': The global positions of the end effectors. The shape is (num_envs, num_ee, 3).
 * 'ee_local': The local positions of the end effectors. The shape is (num_envs, num_ee, 3).
-* 'joint_targets_rate': The rate of change of joint targets (from actions). The shape is (num_envs, num_dof).
+* 'joint_targets_rate': The rate of change of joint targets (from actions), normalized. The shape is (num_envs, 1).
 * 'target_frames': The target frame from reference motion based on the current phase. The shape is (num_envs, frame_dim).
 * 'reset_frames': The frame from reference motion that the corresponds to the phase at the beginning of the episode. The shape is (num_envs, frame_dim).
 """
