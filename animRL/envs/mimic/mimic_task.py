@@ -40,6 +40,7 @@ class MimicTask(BaseTask):
         self.RSI = self.cfg.env.reference_state_initialization
 
         self._prepare_reward_function()
+        self.setup_fake_camera_img()
         self.init_done = True
         self._validate_config()
 
@@ -351,13 +352,14 @@ class MimicTask(BaseTask):
             self._draw_debug_vis(vis_flag=self.cfg.viewer.vis_flag)
         super().render(sync_frame_time=sync_frame_time)
 
+    def setup_fake_camera_img(self):
+        self.fig = plt.figure()
+        self.ax = self.fig.add_subplot(111, projection='3d')
+        self.plot_robot = URDF.load(self.cfg.asset.file.format(ROOT_DIR=ROOT_DIR))
+        self.canvas = FigureCanvas(self.fig)
+
     def fake_camera_img(self):
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-
-        if self.plot_robot is None:
-            self.plot_robot = URDF.load(self.cfg.asset.file.format(ROOT_DIR=ROOT_DIR))
-
+        self.ax.clear()
         joint_angles = self.dof_pos[self.focus_env].detach().cpu().numpy()
         joint_angles = {'names': self.dof_names,
                         'values': joint_angles}
@@ -365,12 +367,10 @@ class MimicTask(BaseTask):
                                     self.root_states[self.focus_env, 3:7].detach().cpu().numpy(),
                                     joint_angles
                                     )
-        plot_robot(ax, self.plot_robot, frames)
-
-        canvas = FigureCanvas(fig)
-        canvas.draw()
+        plot_robot(self.ax, self.plot_robot, frames)
+        self.canvas.draw()
 
         # Convert to numpy array
-        img = np.frombuffer(canvas.tostring_rgb(), dtype='uint8')
-        img = img.reshape(canvas.get_width_height()[::-1] + (3,))  # (H, W, 3)
+        img = np.frombuffer(self.canvas.tostring_rgb(), dtype='uint8')
+        img = img.reshape(self.canvas.get_width_height()[::-1] + (3,))  # (H, W, 3)
         return img
